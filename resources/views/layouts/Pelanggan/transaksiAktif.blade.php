@@ -1,7 +1,9 @@
 @extends('templates.main')
 @section('container')
-<img src="img/backButton.svg" alt="#" style="width:50px;margin-left:-6%"
-    class="position-absolute btn btn-outline-primary mt-4">
+<a href="/">
+    <img src="img/backButton.png" alt="#" style="width:50px;margin-left:-6%"
+        class="position-absolute btn btn-outline-primary mt-4">
+</a>
 <section class="table-section p-4">
     <h2 class="fw-semibold text-center">Transaksi Aktif</h2>
     <div class="tabel p-4 top-50">

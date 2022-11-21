@@ -1,7 +1,10 @@
 @extends('templates.main')
 <!--merujuk ke main.blade.php-->
 @section('container')
-<img src="img/backButton.svg" alt="#" style="width:50px;margin-left:-6%" class="position-absolute btn btn-outline-primary mt-4">
+<a href="/">
+    <img src="img/backButton.png" alt="#" style="width:50px;margin-left:-6%"
+        class="position-absolute btn btn-outline-primary mt-4">
+</a>
 <section class="rataKanan">
     <img src="img/bgCekEstimasi.png" alt="">
     <h3 class="ms-5 justify-content-center position-absolute start-0 top-50 text-white">Temukan Kemudahan Mengetahui

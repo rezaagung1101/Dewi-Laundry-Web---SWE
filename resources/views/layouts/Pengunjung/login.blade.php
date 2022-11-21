@@ -1,6 +1,9 @@
 @extends('templates.mainPengunjung')
 @section('container')
-<img src="img/backButton.svg" alt="#" style="width:50px;margin-left:-6%" class="position-absolute btn btn-outline-primary mt-4">
+<a href="/">
+    <img src="img/backButton.png" alt="#" style="width:50px;margin-left:-6%"
+        class="position-absolute btn btn-outline-primary mt-4">
+</a>
 <section class="login-section p-4">
     <div class="container-rataKanan p-4 lh-lg">
         <form class="border border-dark p-4 rounded-3 position-relative start-50 end-50" style="margin-left:-10%">
