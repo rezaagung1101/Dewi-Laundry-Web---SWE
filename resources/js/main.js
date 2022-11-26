@@ -1,6 +1,12 @@
-// const { functions } = require("lodash");
+/**
+ * Template Name: NiceAdmin - v2.3.1
+ * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
+ */
 (function () {
     "use strict";
+
     /**
      * Easy selector helper function
      */
@@ -41,19 +47,51 @@
     }
 
     /**
-     * Toggle .navbar-scrolled class to #navbar when page is scrolled
+     * Search bar toggle
      */
-    let selectNavbar = select(".navbar");
-    if (selectNavbar) {
-        const navbarScrolled = () => {
-            if (window.scrollY > 50) {
-                selectNavbar.classList.add("navbar-scrolled");
+    if (select(".search-bar-toggle")) {
+        on("click", ".search-bar-toggle", function (e) {
+            select(".search-bar").classList.toggle("search-bar-show");
+        });
+    }
+
+    /**
+     * Navbar links active state on scroll
+     */
+    let navbarlinks = select("#navbar .scrollto", true);
+    const navbarlinksActive = () => {
+        let position = window.scrollY + 200;
+        navbarlinks.forEach((navbarlink) => {
+            if (!navbarlink.hash) return;
+            let section = select(navbarlink.hash);
+            if (!section) return;
+            if (
+                position >= section.offsetTop &&
+                position <= section.offsetTop + section.offsetHeight
+            ) {
+                navbarlink.classList.add("active");
             } else {
-                selectNavbar.classList.remove("navbar-scrolled");
+                navbarlink.classList.remove("active");
+            }
+        });
+    };
+    window.addEventListener("load", navbarlinksActive);
+    onscroll(document, navbarlinksActive);
+
+    /**
+     * Toggle .header-scrolled class to #header when page is scrolled
+     */
+    let selectHeader = select("#header");
+    if (selectHeader) {
+        const headerScrolled = () => {
+            if (window.scrollY > 100) {
+                selectHeader.classList.add("header-scrolled");
+            } else {
+                selectHeader.classList.remove("header-scrolled");
             }
         };
-        window.addEventListener("load", navbarScrolled);
-        onscroll(document, navbarScrolled);
+        window.addEventListener("load", headerScrolled);
+        onscroll(document, headerScrolled);
     }
 
     /**
@@ -86,10 +124,10 @@
      * Initiate Bootstrap validation check
      */
     let needsValidation = document.querySelectorAll(".needs-validation");
-    Array.prototype.slice.call(needsValidation).forEach((form) => {
+    Array.prototype.slice.call(needsValidation).forEach(function (form) {
         form.addEventListener(
             "submit",
-            (event) => {
+            function (event) {
                 if (!form.checkValidity()) {
                     event.preventDefault();
                     event.stopPropagation();
@@ -101,18 +139,14 @@
         );
     });
 
-    
-    // window.addEventListener('load',(e) => {
-    //     console.log("test");
-    //     const modal = document.getElementById('modal'); 
-    //     // modal.modal("show")
-    // })
-
-    document.addEventListener('DOMContentLoaded', () => {
-        
-        document.getElementById('btn-modal').click();
-    }, false)
-
+    /**
+     * Initiate Datatables
+     */
+    const datatables = select(".datatable", true);
+    datatables.forEach((datatable) => {
+        datatable.classList.add("rounded-2");
+        new simpleDatatables.DataTable(datatable, {
+            perPage: 5,
+        });
+    });
 })();
-
-
